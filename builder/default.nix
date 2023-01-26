@@ -101,7 +101,10 @@ let
     in
     runCommand "vendor-env"
       {
-        nativeBuildInputs = [ go ];
+        nativeBuildInputs = [
+          go
+          pkgs.git
+        ];
         json = toJSON (filterAttrs (n: _: n != defaultPackage) modulesStruct.mod);
 
         sources = toJSON (filterAttrs (n: _: n != defaultPackage) sources);
